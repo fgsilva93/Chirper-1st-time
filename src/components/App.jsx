@@ -2,51 +2,54 @@ import React, { Component } from 'react'
 // import './App.css';
 // import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import { Container, Row, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import Chirper from './Chirper';
 
 export class App extends Component {
   state = {
-    chiping: [
+    userName: '',
+    message: '',
+    chipingArray: [
       {
         id: 1,
-        text: 'something exist here'
+        userName: 'bill',
+        message: 'Hello'
       },
       {
         id: 2,
-        text: 'something else exist here too'
+        userName: 'Nye',
+        message: 'Hello'
       }, 
       {
         id: 3,
-        text: 'something else again exist here again'
+        userName: 'Steve',
+        message: 'Hello'
+       
       }
     ]
   }
 
   handleClick() {
-    console.log('it working!');
+    console.log('it works!');
   }
   
   render() {
     return (
-      <Container>
-        <Row>
-        <div>
+      <div>
         <h1>Chirper</h1>
-        </div>
-        </Row>
-        <Row>
         <div>
-        <Button variant ="success" onClick ={ ()=> this.handleClick() } >Click me!</Button>
+        <input className ='ml-1'
+        type = "text"
+        placeholder = "UserName"
+        />
+        <input
+        type = "text"
+        placeholder = "message"
+        />
+        <Button variant = "success mb-1" onClick = { this.handleClick }>Chirp IT!</Button>
         </div>
-        </Row>
-        <Row>
-          <div>
-            <Chirper chip = { this.state.chiping } />
-          </div>
-        </Row>
-        
-      </Container>
+      </div>
+      
     )
   }
 }
