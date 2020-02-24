@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import './App.css';
 // import { Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import Chirper from './Chirper';
 
@@ -14,65 +14,64 @@ export class App extends Component {
       message: '',
       chipingArray: [
         {
-          id: 1,
           userName: 'Bill',
           message: 'Hello, this is a message.'
         },
         {
-          id: 2,
+
           userName: 'Nye',
           message: 'Hello, this is another message.'
-        }, 
+        },
         {
-          id: 3,
+
           userName: 'Steve',
           message: 'Hello, this is just a message.'
-         
+
         }
       ]
+    }
+    this.handleClick = this.handleClick.bind(this);
   }
-  
-  }
-
-  handleClick() {
-    console.log('it works!');
-    
-  }
-
-  handletInput(e) {
+  handleUserName(e) {
     this.setState({ userName: e.target.value })
   }
 
-  handletInput2(e) {
+  handleMessage(e) {
     this.setState({ message: e.target.value })
   }
-  
+  handleClick() {
+    // console.log( {userName: e.target.value} );
+    const newChirp = {
+      userName: this.state.userName,
+      message: this.state.message
+    }
+
+    this.setState({ chipingArray: [...this.state.chipingArray, newChirp] })
+  }
+
+  handletInput(e) {
+    this.setState({ userName: e.target.value }, { message: e.target.value })
+  }
+
+  getSomeStyle(){
+    return {
+      background: 'lightgreen', marginTop: '5px', marginLeft: '5px', width: '500px', border: 'solid 2px green', color: 'green'
+    }
+  }
+
   render() {
     return (
+
       <div>
-        <h1>Chirper</h1>
+        <h1 style = {this.getSomeStyle()}>Chirper</h1>
         <div>
-        <input className ='ml-1'
-        type = "text"
-        placeholder = "UserName"
-        value = {this.state.userName }
-        onChange = { (e) => this.handletInput(e) }
-        />
-        <input
-        type = "text"
-        placeholder = "message"
-        value = { this.state.message }
-        onChange = { (e) => this.handletInput2(e) }
-        />
-        <Button 
-        variant = "success mb-1"
-        onClick = { this.handleClick }
-        >Chirp IT!
-        </Button>
+          <input className='ml-1' type="text" placeholder="UserName" value={this.state.userName} onChange={(e) => this.handleUserName(e)}/>
+          <input type="text" placeholder="message" value={this.state.message} onChange={(e) => this.handleMessage(e)}/>
+          <Button variant="success mb-1" onClick={(e) => this.handleClick(e)}>Chirp IT!</Button>
         </div>
-        <Chirper array = { this.state.chipingArray }/>
+        <Chirper array={this.state.chipingArray} />
       </div>
-      
+
     )
   }
 }
