@@ -6,31 +6,44 @@ import { Button } from 'react-bootstrap';
 import Chirper from './Chirper';
 
 export class App extends Component {
-  state = {
-    userName: '',
-    message: '',
-    chipingArray: [
-      {
-        id: 1,
-        userName: 'Bill',
-        message: 'Hello, this is a message.'
-      },
-      {
-        id: 2,
-        userName: 'Nye',
-        message: 'Hello, this is another message.'
-      }, 
-      {
-        id: 3,
-        userName: 'Steve',
-        message: 'Hello, this is just a message.'
-       
-      }
-    ]
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userName: '',
+      message: '',
+      chipingArray: [
+        {
+          id: 1,
+          userName: 'Bill',
+          message: 'Hello, this is a message.'
+        },
+        {
+          id: 2,
+          userName: 'Nye',
+          message: 'Hello, this is another message.'
+        }, 
+        {
+          id: 3,
+          userName: 'Steve',
+          message: 'Hello, this is just a message.'
+         
+        }
+      ]
+  }
+  
   }
 
   handleClick() {
     console.log('it works!');
+  }
+
+  handletInput(e) {
+    this.setState({ userName: e.target.value })
+  }
+
+  handletInput2(e) {
+    this.setState({ message: e.target.value })
   }
   
   render() {
@@ -41,14 +54,22 @@ export class App extends Component {
         <input className ='ml-1'
         type = "text"
         placeholder = "UserName"
+        value = {this.state.userName }
+        onChange = { (e) => this.handletInput(e) }
         />
         <input
         type = "text"
         placeholder = "message"
+        value = { this.state.message }
+        onChange = { (e) => this.handletInput2(e) }
         />
-        <Button variant = "success mb-1" onClick = { this.handleClick }>Chirp IT!</Button>
+        <Button 
+        variant = "success mb-1"
+        onClick = { this.handleClick }
+        >Chirp IT!
+        </Button>
         </div>
-        <Chirper array = { this.state.chipingArray } />
+        <Chirper array = { this.state.chipingArray }/>
       </div>
       
     )
