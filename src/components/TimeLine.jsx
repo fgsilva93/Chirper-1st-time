@@ -1,21 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Card } from 'react-bootstrap';
 
 export class TimeLine extends Component {
 
-    getStyle() {
-        return {
-            background: 'lightgray',
-            marginBottom: '10px',
-            border: '1px solid gray'
-        }
-    }
-
     render() {
         return (
-            <div style = { this.getStyle() }>
-            <h3>{ this.props.chip2.userName}</h3>
-            <p>{ this.props.chip2.message }</p>
-            </div>
+            <Card style={{ width: '500px', marginBottom: '10px' }}>
+                <Card.Body>
+                    <Card.Title>{ this.props.chip2.userName}</Card.Title> 
+                    <Card.Text>{ this.props.chip2.message }</Card.Text>
+                </Card.Body>
+            </Card>
         )
     }
 }

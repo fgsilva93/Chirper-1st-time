@@ -36,6 +36,7 @@ export class App extends Component {
 
   handleClick() {
     console.log('it works!');
+    
   }
 
   handletInput(e) {
