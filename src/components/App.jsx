@@ -50,20 +50,14 @@ export class App extends Component {
   }
 
   handletInput(e) {
-    this.setState({ userName: e.target.value }, { message: e.target.value })
-  }
-
-  getSomeStyle(){
-    return {
-      background: 'lightgreen', marginTop: '5px', marginLeft: '5px', width: '500px', border: 'solid 2px green', color: 'green'
-    }
+    this.setState( { userName: e.target.value }, { message: e.target.value } )
   }
 
   render() {
     return (
 
       <div>
-        <h1 style = {this.getSomeStyle()}>Chirper</h1>
+        <h1 style = { {background: 'lightgreen', marginTop: '5px', marginLeft: '5px', width: '500px', border: 'solid 2px green', color: 'green'}}>Chirper</h1>
         <div>
           <input className='ml-1' type="text" placeholder="UserName" value={this.state.userName} onChange={(e) => this.handleUserName(e)}/>
           <input type="text" placeholder="message" value={this.state.message} onChange={(e) => this.handleMessage(e)}/>
