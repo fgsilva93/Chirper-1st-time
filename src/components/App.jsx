@@ -12,18 +12,18 @@ export class App extends Component {
     chipingArray: [
       {
         id: 1,
-        userName: 'bill',
-        message: 'Hello'
+        userName: 'Bill',
+        message: 'Hello, this is a message.'
       },
       {
         id: 2,
         userName: 'Nye',
-        message: 'Hello'
+        message: 'Hello, this is another message.'
       }, 
       {
         id: 3,
         userName: 'Steve',
-        message: 'Hello'
+        message: 'Hello, this is just a message.'
        
       }
     ]
@@ -48,6 +48,7 @@ export class App extends Component {
         />
         <Button variant = "success mb-1" onClick = { this.handleClick }>Chirp IT!</Button>
         </div>
+        <Chirper array = { this.state.chipingArray } />
       </div>
       
     )
